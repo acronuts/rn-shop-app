@@ -10,6 +10,7 @@ import {
   TouchableNativeFeedback,
 } from "react-native";
 import colors from "../../constants/colors";
+import DefaultText from '../UI/DefaultText';
 
 const ProductItem = (props) => {
   let TouchableComp = TouchableOpacity;
@@ -25,8 +26,8 @@ const ProductItem = (props) => {
           <View>
             <Image style={styles.image} source={{ uri: props.image }} />
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>{props.title}</Text>
-              <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+              <DefaultText style={styles.title}>{props.title}</DefaultText>
+              <DefaultText style={styles.price}>${props.price.toFixed(2)}</DefaultText>
             </View>
             <View style={styles.buttons}>
               <Button
@@ -74,8 +75,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
+    fontFamily: 'open-sans-bold',
     fontSize: 18,
-    marginVertical: 4,
+    marginVertical: 2,
   },
   price: {
     fontSize: 14,
