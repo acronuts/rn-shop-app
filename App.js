@@ -1,18 +1,25 @@
+import React, { useState } from "react";
+import { LogBox } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { Text, View } from "react-native";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 import ShopNavigator from "./navigation/ShopNavigator";
 
 import productsReducer from "./store/reducers/products";
 import cartReducer from "./store/reducers/cart";
+import ordersReducer from './store/reducers/order'
+import { enableScreens } from "react-native-screens";
+
+enableScreens()
+LogBox.ignoreAllLogs(true);
+
 
 const rootReducer = combineReducers({
   products: productsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  orders: ordersReducer
 });
 
 const store = createStore(rootReducer);
@@ -40,7 +47,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ShopNavigator />
-      {/* <StatusBar style="auto" /> */}
+      <StatusBar style="auto" />
     </Provider>
   );
 }

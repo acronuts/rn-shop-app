@@ -22,20 +22,22 @@ const CartItem = (props) => {
     <View style={styles.cartItem}>
       <View style={styles.itemData}>
         <DefaultText style={styles.quantity}>{props.quantity} </DefaultText>
-        <DefaultText style={styles.title}>{props.title}</DefaultText>
+        {/* <View style={styles.titleContainer}> */}
+          <DefaultText style={styles.title} numberOfLines={1} ellipsizeMode="tail" >{props.title}</DefaultText>
+        {/* </View> */}
       </View>
       <View style={styles.itemData}>
         <DefaultText style={styles.amount}>
           ${props.amount.toFixed(2)}
         </DefaultText>
-        <TouchableCmp onPress={props.onRemove} style={styles.deleteButton}>
+        {props.delete && <TouchableCmp onPress={props.onRemove} style={styles.deleteButton}>
           <Ionicons
             name={Platform.OS === "android" ? "trash" : "ios-trash"}
-            size={23}
-            style={{ marginLeft: 20 }}
+            size={22}
+            style={{ marginRight: 20, marginLeft: 10 }}
             color="red"
           />
-        </TouchableCmp>
+        </TouchableCmp>}
       </View>
     </View>
   );
@@ -43,10 +45,11 @@ const CartItem = (props) => {
 
 const styles = StyleSheet.create({
   cartItem: {
+      width: '100%',
     padding: 10,
     backgroundColor: "white",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     marginHorizontal: 20,
   },
   itemData: {
@@ -58,16 +61,21 @@ const styles = StyleSheet.create({
     color: colors.accent,
     fontSize: 16,
   },
+  titleContainer: {
+    //   width: '60%',
+  },
   title: {
+    maxWidth: 180,
     fontFamily: "open-sans-bold",
     fontSize: 16,
   },
   amount: {
     fontFamily: "open-sans-bold",
     fontSize: 16,
+    marginLeft: 5,
   },
   deleteButton: {
-    marginLeft: 20,
+    marginLeft: 10,
   },
 });
 
