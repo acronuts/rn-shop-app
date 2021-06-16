@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   detailItems: {
     width: "100%",
-    marginRight: 40
+    // marginRight: 40
   },
 });
 
