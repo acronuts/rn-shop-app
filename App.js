@@ -13,7 +13,7 @@ import ordersReducer from './store/reducers/order'
 import { enableScreens } from "react-native-screens";
 
 enableScreens()
-LogBox.ignoreAllLogs(true);
+LogBox.ignoreLogs(['interpolate()'])
 
 
 const rootReducer = combineReducers({
@@ -47,7 +47,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ShopNavigator />
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </Provider>
   );
 }

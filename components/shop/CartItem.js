@@ -18,26 +18,32 @@ const CartItem = (props) => {
     TouchableCmp = TouchableNativeFeedback;
   }
 
+  const truncate = (str, n) => {
+    return str.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
   return (
     <View style={styles.cartItem}>
       <View style={styles.itemData}>
-        <DefaultText style={styles.quantity}>{props.quantity} </DefaultText>
-        {/* <View style={styles.titleContainer}> */}
-          <DefaultText style={styles.title} numberOfLines={1} ellipsizeMode="tail" >{props.title}</DefaultText>
-        {/* </View> */}
+        <Text style={styles.quantity}>{props.quantity} </Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {truncate(props.title, 24)}
+        </Text>
       </View>
       <View style={styles.itemData}>
         <DefaultText style={styles.amount}>
           ${props.amount.toFixed(2)}
         </DefaultText>
-        {props.delete && <TouchableCmp onPress={props.onRemove} style={styles.deleteButton}>
-          <Ionicons
-            name={Platform.OS === "android" ? "trash" : "ios-trash"}
-            size={22}
-            style={{ marginRight: 20, marginLeft: 10 }}
-            color="red"
-          />
-        </TouchableCmp>}
+        {props.delete && (
+          <TouchableCmp onPress={props.onRemove} style={styles.deleteButton}>
+            <Ionicons
+              name={Platform.OS === "android" ? "trash" : "ios-trash"}
+              size={22}
+              style={{ marginLeft: 5 }}
+              color="red"
+            />
+          </TouchableCmp>
+        )}
       </View>
     </View>
   );
@@ -45,12 +51,12 @@ const CartItem = (props) => {
 
 const styles = StyleSheet.create({
   cartItem: {
-      width: '100%',
+    width: "100%",
     padding: 10,
     backgroundColor: "white",
     flexDirection: "row",
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
+    justifyContent: "space-between",
+    // marginHorizontal: 20,
   },
   itemData: {
     flexDirection: "row",
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
     //   width: '60%',
   },
   title: {
-    maxWidth: 180,
+    // maxWidth: 180,
     fontFamily: "open-sans-bold",
     fontSize: 16,
   },
