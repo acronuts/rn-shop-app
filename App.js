@@ -4,9 +4,10 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
-import ShopNavigator from "./navigation/ShopNavigator";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import Thunk from 'redux-thunk'
 
+import ShopNavigator from "./navigation/ShopNavigator";
 import productsReducer from "./store/reducers/products";
 import cartReducer from "./store/reducers/cart";
 import ordersReducer from './store/reducers/order'
@@ -22,7 +23,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(Thunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
