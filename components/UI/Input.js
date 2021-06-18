@@ -36,7 +36,6 @@ const Input = (props) => {
     if (inputState.touched) {
       onInputChange(id, inputState.value, inputState.isValid);
     }
-    onInputChange(id, inputState.value, inputState.isValid)
   }, [inputState, onInputChange, id]);
 
   const textChangeHandler = (text) => {
