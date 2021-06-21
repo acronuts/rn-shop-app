@@ -11,6 +11,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/UI/HeaderButton";
 import OrderItem from "../../components/shop/OrderItem";
 import * as ordersActions from "../../store/actions/order";
+import DefaultText from './../../components/UI/DefaultText';
 
 const OrdersScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +33,15 @@ const OrdersScreen = (props) => {
       </View>
     );
   }
+
+  if (orders.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <DefaultText>No orders found</DefaultText>
+      </View>
+    );
+  }
+
 
   return (
     <FlatList

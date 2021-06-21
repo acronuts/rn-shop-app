@@ -133,6 +133,7 @@ const EditProductScreen = (props) => {
     )
   }
 
+
   return (
     <KeyboardAvoidingView  behavior='padding' >
     <ScrollView>
